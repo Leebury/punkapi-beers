@@ -1,0 +1,11 @@
+require 'spec_helper'
+
+# THIS WILL BE FOR OUR CLASS/MODULE
+describe "PUNK API OBJECT/CLASS/MODULE" do
+	
+	before(:all) do
+		# THIS WILL BE AN INSTANCE OF OUR CLASS/MODULE
+	end
+
+	# THE TESTS WILL GO HERE
+end
