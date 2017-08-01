@@ -27,7 +27,7 @@ module PunkApi
 
 		self.get(query)
 		
-	end
+	end	
 
 	def self.get_beers
 		self.get("").body
