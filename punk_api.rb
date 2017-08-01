@@ -61,7 +61,9 @@ module PunkApi
         hash.each do |key, value|
 
             if key == key_name
-                return hash
+
+                return hash[key]
+
             elsif value.is_a?(Hash)
                 self.json_key_getter_hash_recursive(value, key_name)
             elsif value.is_a?(Array)
@@ -77,7 +79,9 @@ module PunkApi
         array.each do |item|
 
             if item == key_name
-                return array
+
+                return item
+
             elsif item.is_a?(Hash)
                 self.json_key_getter_hash_recursive(item, key_name)
             elsif item.is_a?(Array)
@@ -92,17 +96,12 @@ module PunkApi
 
         if object.is_a?(Hash)
             self.json_key_getter_hash_recursive(object, key_name)
-        elsif object.is_a?(Hash)
+        elsif object.is_a?(Array)
             self.json_key_getter_array_recursive(object, key_name)
         end
 
     end
 
 end
-
-
-
-
-
 
 
