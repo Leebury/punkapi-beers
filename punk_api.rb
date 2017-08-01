@@ -39,6 +39,10 @@ module PunkApi
         self.get("https://api.punkapi.com/v2/beers/#{id}")
     end
 
+    def self.get_random_beer
+        self.get("https://api.punkapi.com/v2/beers/random")
+    end
+
 end
 
 
