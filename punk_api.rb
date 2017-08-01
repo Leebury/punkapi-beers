@@ -107,8 +107,4 @@ module PunkApi
 
 end
 
-beers = PunkApi::get_all_beers[0]
 
-id = PunkApi::key_getter_recursive(beers, "volume")
-
-puts id 
