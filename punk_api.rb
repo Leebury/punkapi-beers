@@ -36,6 +36,9 @@ module PunkApi
     end 
 
     def self.get_beer_by_id(id)
+        if (id < 1 || id > 234)
+            raise ArgumentError.new('Id is out of range.')
+        end
         self.get("https://api.punkapi.com/v2/beers/#{id}")[0]
     end
 
