@@ -1,3 +1,3 @@
-require 'spec_helper'
+require 'airborne'
 
 # OUR CLASS/MODULE WILL GO HERE
