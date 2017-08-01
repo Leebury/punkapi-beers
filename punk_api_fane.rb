@@ -6,11 +6,22 @@ module PunkApi
 
 	base_uri 'https://api.punkapi.com/v2/beers'
 
-	def self.get_beer_with_food(food_name)
+	def self.get_beer_with_food(*food_names)
 
-		self.get("?#{food_name}").body
+		query = "https://api.punkapi.com/v2/beers?food="
 
+		food_names.map do |food_name|
+
+			food_name.gsub(" ","_")
+			query += food_name + "&"
+
+		end
+
+		self.get(query)
 	end
+
+
+
 
 	def self.get_beer_with_params(params_hash)
 
@@ -47,7 +58,9 @@ query_params_hash = {
 }
 
 
-puts PunkApi::get_beer_with_params(query_params_hash)
+# puts PunkApi::get_beer_with_params(query_params_hash).class
+puts PunkApi::get_beer_with_food("chicken wings")[0]["food_pairing"]
+
 
 
 
