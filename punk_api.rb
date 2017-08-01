@@ -53,7 +53,29 @@ module PunkApi
         end
 
         self.get(query)
-        
+
+    end
+
+    def json_key_getter_recursive(object, key_name)
+
+        object.each do |key, value|
+
+            if key == key_name
+
+                return object
+
+            elsif value.is_a?(Hash)
+
+                json_key_getter_recursive(value)
+                
+            elsif value.is_a?(Array)
+
+                json_key_getter_recursive
+
+            end
+
+        end
+
     end
 
 end
