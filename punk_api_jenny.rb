@@ -1,4 +1,5 @@
-require 'airborne'
+require_relative 'spec/spec_helper'
+
 
 # OUR CLASS/MODULE WILL GO HERE
 
@@ -13,7 +14,11 @@ module PunkApi
     end
 
     def self.get_beer_by_name(name)
-        beer = HTTParty.get("https://api.punkapi.com/v2/beers?beer_name=#{name}")
+        HTTParty.get("https://api.punkapi.com/v2/beers?beer_name=#{name}")
     end
 
+    def self.check_rate_limit
+        HTTParty.get("https://api.punkapi.com/v2/beers").headers["x-ratelimit-remaining"]
+    end
+    
 end
