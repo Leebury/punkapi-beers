@@ -43,6 +43,18 @@ module PunkApi
         self.get("https://api.punkapi.com/v2/beers/random")[0]
     end
 
+    def self.get_beer_with_food(*food_names)
+
+        query = "https://api.punkapi.com/v2/beers?food="
+
+        food_names.map do |food_name|
+            food_name.gsub(" ","_")
+            query += food_name + "&"
+        end
+
+        self.get(query)
+    end
+
 end
 
 
