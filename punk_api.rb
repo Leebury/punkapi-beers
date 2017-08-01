@@ -62,7 +62,7 @@ module PunkApi
 
             if key == key_name
 
-                return hash
+                return hash[key]
 
             elsif value.is_a?(Hash)
 
@@ -84,7 +84,7 @@ module PunkApi
 
             if item == key_name
 
-                return array
+                return item
 
             elsif item.is_a?(Hash)
 
@@ -107,7 +107,7 @@ module PunkApi
 
             self.json_key_getter_hash_recursive(object, key_name)
 
-        elsif object.is_a?(Hash)
+        elsif object.is_a?(Array)
 
             self.json_key_getter_array_recursive(object, key_name)
 
@@ -115,10 +115,16 @@ module PunkApi
 
     end
 
-
 end
 
 
+
+
+beers = PunkApi::get_all_beers[0]
+
+id = PunkApi::key_getter_recursive(beers, "volume")
+
+puts id 
 
 
 
