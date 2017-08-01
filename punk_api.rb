@@ -16,4 +16,8 @@ module PunkApi
         beer = HTTParty.get("https://api.punkapi.com/v2/beers?beer_name=#{name}")
     end
 
+    def self.check_rate_limit
+        HTTParty.get("https://api.punkapi.com/v2/beers").headers["x-ratelimit-remaining"]
+    end
+
 end
