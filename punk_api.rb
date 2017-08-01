@@ -56,7 +56,7 @@ module PunkApi
 
     end
 
-    def json_key_getter_recursive(object, key_name)
+    def self.json_key_getter_recursive(object, key_name)
 
         object.each do |key, value|
 
