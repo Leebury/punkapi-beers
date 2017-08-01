@@ -15,7 +15,7 @@ module PunkApi
     end
 
     def self.get_beer_by_name(name)
-        beer = self.get("https://api.punkapi.com/v2/beers?beer_name=#{name}")
+        beer = self.get("https://api.punkapi.com/v2/beers?beer_name=#{name}")[0]
     end
 
     def self.check_rate_limit
@@ -25,19 +25,23 @@ module PunkApi
     def self.get_beer_with_params(params_hash)
 
         query = "https://api.punkapi.com/v2/beers?"
-
         keys = params_hash.keys
         values = params_hash.values
 
         for i in 0...((params_hash.length) -1) do 
-                    
             query += keys[i].to_s + "=" + values[i] + "&"
-
         end
 
         self.get(query)
-        
     end 
+
+    def self.get_beer_by_id(id)
+        self.get("https://api.punkapi.com/v2/beers/#{id}")[0]
+    end
+
+    def self.get_random_beer
+        self.get("https://api.punkapi.com/v2/beers/random")[0]
+    end
 
 end
 
